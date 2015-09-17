@@ -1,0 +1,21 @@
+schema-version: 1.0.0
+application-family: Databases
+application-name: BigData
+application-version: 2
+reach-info:
+  tattoo: https://c1598c651a73f4962435-136b84baf6d25f1f72dfcc119f0175fa.ssl.cf2.rackcdn.com/bigdata-20x20.jpg
+  icon-20x20:https://c1598c651a73f4962435-136b84baf6d25f1f72dfcc119f0175fa.ssl.cf2.rackcdn.com/bigdata-20x20.jpg
+abstract: |
+  The Rackspace Cloud Big Data Platform provides a scalable, robust, and complete Hadoop cluster 
+instructions: |
+  #### Getting Started
+  If you're new to Rackspace Cloud Big Data, the [resource](http://docs.rackspace.com/cbd/api/v1.0/cbd-getting-started/content/CBD_Overview.html)
+  helps users to know more about it. To learn more about [Hadoop](http://hortonworks.com/hadoop/) Rackspace Bigdata provider Hortonwork more details
+
+  #### Logging in via SSH
+  To access your cluster ( A group of servers/nodes), SSH into the gateway node with your `publicKey` parameter used in configuration.
+
+description: |
+  Multiple Linux servers running an
+  [Rackspace Cloud Big Data](http://www.rackspace.com/en-us/cloud/big-data) cluster.
+
