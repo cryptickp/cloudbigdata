@@ -42,7 +42,7 @@ Parameters can be replaced with your own values when standing up a stack.
  - `clusterName`: A descriptive name of the cluster; useful when there are multiple clusters to track
  - `clusterLogin`: This will be the account created on the cluster to enable SSH access. Example: ssh clusterLogin@<your cluster IP>.
  - `flavor`: The flavor defines the resources (like disk space and RAM) available on the individual systems making up the cluster. Flavors are updated when new cloud hardware is available so it is always best to check the CBD REST API for the current list (see Reference Documentation below for details).
- - `numSlaveNodes`: numSlaveNodes defines the replication factor (how many copies of your data are stored for fault tolerance). 3 tends to be a pretty standard value. Higher replication will mean less total disk space available in the cluster and lower values may increase risk of data loss in rare catastrophic failure conditions.
+ - `numSlaveNodes`: numSlaveNode is the number of hosts in the cluster that perform slave roles like DataNode for HDFS or NodeManager for YARN.  3 is what we use in testing because it's kind of a useful minimum.
  - `publicKeyName`: publicKeyName is an easy to remember name for the SSH public key used in the cluster. This name may be reused in other clusters in order to reuse public keys and allow the same private key to SSH into clusters across a company/organization if desired.
  - `publicKey` This is the full public key (matching your securely stored private key) that will be installed into the cluster systems which enable SSHing into cluster nodes. CBD clusters disable login/password-based SSH connections so this key is required for cluster access. It is important to put quotes around this value.
 
