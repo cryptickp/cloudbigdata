@@ -1,7 +1,7 @@
 Description
 ==========
 
-This is a Heat template to deploy a Rackspace Cloud Big Data cloud hadoop cluster.
+This is a Heat template to deploy a Rackspace Cloud Big Data cluster.
 
 Requirements
 ==========
@@ -38,13 +38,28 @@ Parameters
 =========
 Parameters can be replaced with your own values when standing up a stack.
 
- - `stackId`: Stack IDs define the type of CBD cluster to create. 
- - `clusterName`: A descriptive name of the cluster; useful when there are multiple clusters to track
- - `clusterLogin`: This will be the account created on the cluster to enable SSH access. Example: ssh clusterLogin@<your cluster IP>.
- - `flavor`: The flavor defines the resources (like disk space and RAM) available on the individual systems making up the cluster. Flavors are updated when new cloud hardware is available so it is always best to check the CBD REST API for the current list (see Reference Documentation below for details).
- - `numSlaveNodes`: numSlaveNode is the number of hosts in the cluster that perform slave roles like DataNode for HDFS or NodeManager for YARN.  3 is what we use in testing because it's kind of a useful minimum.
- - `publicKeyName`: publicKeyName is an easy to remember name for the SSH public key used in the cluster. This name may be reused in other clusters in order to reuse public keys and allow the same private key to SSH into clusters across a company/organization if desired.
- - `publicKey` This is the full public key (matching your securely stored private key) that will be installed into the cluster systems which enable SSHing into cluster nodes. CBD clusters disable login/password-based SSH connections so this key is required for cluster access. It is important to put quotes around this value.
+ - `stackId`: A "stack" is a predefined cluster topology provided by the Cloud Big Data 
+ product.  This is the ID for one of those stacks, i.e. HADOOP_HDP2_2.  To get a current list of 
+ available stacks, refer to the API documentation. 
+ - `clusterName`: A descriptive name of the cluster; useful when you have multiple clusters.
+ - `clusterLogin`: The system username to be used for getting access to the cluster.  You can 
+ use this to log in to individual servers using SSH, and run commands against your cluster.
+ Example: ssh <clusterLogin>@<server IP>
+ - `flavor`: The flavor defines the resources (like disk space and RAM) available on the 
+ slave nodes in the cluster. Flavors are updated when new cloud hardware is 
+ available so it is always best to check the CBD REST API for the current list (see Reference 
+ Documentation below for details).
+ - `numSlaveNodes`: numSlaveNodes is the number of servers in the cluster that perform slave roles 
+ like DataNode for HDFS or NodeManager for YARN.  These nodes are where data replicas live as 
+ well as where tasks are executed.  3 is a useful minimum, as that gives you at least 2 copies of
+  your data.
+ - `publicKeyName`: publicKeyName is an easy to remember name for the SSH public key used in the 
+ cluster. This name may be reused in other clusters in order to reuse public keys and allow the 
+ same private key to SSH into clusters across a company/organization if desired.
+ - `publicKey` This is the full public key (matching your securely stored private key) that will be 
+ installed into the cluster systems which enable SSHing into cluster nodes. CBD clusters disable 
+ login/password-based SSH connections so this key is required for cluster access. It is important 
+ to put quotes around this value.
 
 Outputs
 =======
@@ -53,7 +68,7 @@ Once a stack comes online, use `heat output-list` to see all available outputs.
 Use `heat output-show <OUTPUT NAME>` to get the value for a specific output.
  
  * `cluster_id`:  Cloud big data cluster ID.
- *  `cbd_version`: Current cloud big data version used.
+ * `cbd_version`: Current cloud big data version used.
  
 Contributing
 ============
